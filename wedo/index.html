@@ -14,8 +14,52 @@
 controls></video>
 <div id="lyrics"></div>
 
-<script>
-	// Complete this section and create a CSS file named style.css
+<script type="text/javascript">
+
+	var video = document.getElementById("wedo");
+	var lyrics = document.getElementById("lyrics");
+
+	video.addEventListener("timeupdate", function() {
+		if (wedo.currentTime > 4 && wedo.currentTime < 6) {
+			lyrics.innerHTML = "<h3>Who controls the british crown?</h3>";
+		}
+		else if (wedo.currentTime > 6 && wedo.currentTime < 8) {
+			lyrics.innerHTML = "<h3>Who keeps the metric system down?</h3>";
+		}
+		else if (wedo.currentTime > 8 && wedo.currentTime < 12) {
+			lyrics.innerHTML = "<h3>We do! (2x)<h3>";
+		} 
+		else if (wedo.currentTime > 12 && wedo.currentTime < 15) {
+			lyrics.innerHTML = "<h3>Who leaves Atlantis off the maps?<h3>";
+			/*the lyrics on the lab page say who KEEPS atlantis off the maps
+			  but the lyrics REALLY are who LEAVES atlantis off the maps :)*/
+		}
+		else if (wedo.currentTime > 15 && wedo.currentTime < 17) {
+			lyrics.innerHTML = "<h3>Who keeps the Martians under wraps?<h3>"
+		}
+		else if (wedo.currentTime > 17 && wedo.currentTime < 21) {
+			lyrics.innerHTML = "<h3>We do! (2x)<h3>";
+		}
+		else if (wedo.currentTime > 21 && wedo.currentTime < 25) {
+			lyrics.innerHTML = "<h3>Who holds back the electric car?<h3>";
+		}
+		else if (wedo.currentTime > 25 && wedo.currentTime < 29) {
+			lyrics.innerHTML = "<h3>Who makes Steve Guttenberg a star?<h3>";
+		}
+		else if (wedo.currentTime > 29 && wedo.currentTime < 33.5) {
+			lyrics.innerHTML = "<h3>We do! (2x)<h3>";
+		}
+		else if (wedo.currentTime > 33.5 && wedo.currentTime < 35.5) {
+			lyrics.innerHTML = "<h3>Who robs cavefish of their sight?<h3>";
+		} 
+		else if (wedo.currentTime > 35.5 && wedo.currentTime < 37.5) {
+			lyrics.innerHTML = "<h3>Who rigs every Oscar night?<h3>";
+		}
+		else if (wedo.currentTime > 37.5) {
+			lyrics.innerHTML = "<h3>We do! (2x)<h3>";
+		}
+		
+	}, false);
 </script>
 </body>
 </html>	
