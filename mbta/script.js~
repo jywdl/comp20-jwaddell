@@ -1,0 +1,33 @@
+var map;
+
+function initMap() {
+    //south station
+    /*var south_station = new google.maps.LatLng(42.352271, -71.0554200000001);
+
+    //set up map
+    var options = {
+	zoom: 13,
+	center: south_station,
+	mapTypeId: google.maps.MapTypeId.ROADMAP
+    }; */
+
+    //make map
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+        center: {lat: 42.352271, lng: -71.0554200000001},
+        zoom: 13
+    });
+
+    //make marker
+    /*var marker = new google.maps.Marker({
+	    position: south_station,
+	    title: "South Station, Boston, MA"
+    };
+    marker.setMap(map);
+
+    var infowindow = new google.maps.InfoWindow();
+
+    google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent(marker.title);
+	    infowindow.open(map, marker);
+    });*/
+}
