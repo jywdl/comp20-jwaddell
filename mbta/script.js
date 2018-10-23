@@ -30,32 +30,32 @@ function initMap() {
 
     //latlngs (redundant, yes)
 
-var south_stationLL = new google.maps.LatLng(42.352271, -71.0554200000001);
-var andrewLL = new google.maps.LatLng(42.330154, -71.057655);
-var porterLL = new google.maps.LatLng(42.3884, -71.11914899999999);
-var harvardLL = new google.maps.LatLng(42.373362, -71.118956);
-var jfkLL = new google.maps.LatLng(42.320685, -71.052391);
-var savinLL = new google.maps.LatLng(42.31129, -71.053331);
-var parkLL = new google.maps.LatLng(42.35639457, -71.0624242);
-var broadwayLL = new google.maps.LatLng(42.342622, -71.056967);
-var n_quincyLL = new google.maps.LatLng(42.275275, -71.029583);
-var shawmutLL = new google.maps.LatLng(42.29312583, -71.06573796000001);
-var davisLL = new google.maps.LatLng(42.39674, -71.121815);
-var alewifeLL = new google.maps.LatLng(42.395428, -71.142483);
-var kendallLL = new google.maps.LatLng(42.36249079, -71.08617653);
-var charlesLL = new google.maps.LatLng(42.361166, -71.070628);
-var downtownLL = new google.maps.LatLng(42.355518, -71.060225);
-var quincy_cLL = new google.maps.LatLng(42.251809, -71.005409);
-var quincy_aLL = new google.maps.LatLng(42.233391, -71.007153);
-var ashmontLL = new google.maps.LatLng(42.284652, -71.06448899999999);
-var wollastonLL = new google.maps.LatLng(42.2665139, -71.0203369);
-var fieldsLL = new google.maps.LatLng(42.300093, -71.061667);
-var centralLL = new google.maps.LatLng(42.365486, -71.103802);
-var braintreeLL = new google.maps.LatLng(42.2078543, -71.0011385); 
+    var south_stationLL = new google.maps.LatLng(42.352271, -71.0554200000001);
+    var andrewLL = new google.maps.LatLng(42.330154, -71.057655);
+    var porterLL = new google.maps.LatLng(42.3884, -71.11914899999999);
+    var harvardLL = new google.maps.LatLng(42.373362, -71.118956);
+    var jfkLL = new google.maps.LatLng(42.320685, -71.052391);
+    var savinLL = new google.maps.LatLng(42.31129, -71.053331);
+    var parkLL = new google.maps.LatLng(42.35639457, -71.0624242);
+    var broadwayLL = new google.maps.LatLng(42.342622, -71.056967);
+    var n_quincyLL = new google.maps.LatLng(42.275275, -71.029583);
+    var shawmutLL = new google.maps.LatLng(42.29312583, -71.06573796000001);
+    var davisLL = new google.maps.LatLng(42.39674, -71.121815);
+    var alewifeLL = new google.maps.LatLng(42.395428, -71.142483);
+    var kendallLL = new google.maps.LatLng(42.36249079, -71.08617653);
+    var charlesLL = new google.maps.LatLng(42.361166, -71.070628);
+    var downtownLL = new google.maps.LatLng(42.355518, -71.060225);
+    var quincy_cLL = new google.maps.LatLng(42.251809, -71.005409);
+    var quincy_aLL = new google.maps.LatLng(42.233391, -71.007153);
+    var ashmontLL = new google.maps.LatLng(42.284652, -71.06448899999999);
+    var wollastonLL = new google.maps.LatLng(42.2665139, -71.0203369);
+    var fieldsLL = new google.maps.LatLng(42.300093, -71.061667);
+    var centralLL = new google.maps.LatLng(42.365486, -71.103802);
+    var braintreeLL = new google.maps.LatLng(42.2078543, -71.0011385); 
 
-var stations = [south_stationLL, andrewLL, porterLL, harvardLL, jfkLL, savinLL, parkLL,
-                broadwayLL, n_quincyLL, shawmutLL, davisLL, alewifeLL, kendallLL, charlesLL,
-                downtownLL, quincy_cLL, ashmontLL, wollastonLL, fieldsLL, centralLL, braintreeLL];
+    var stations = [south_stationLL, andrewLL, porterLL, harvardLL, jfkLL, savinLL, parkLL,
+                    broadwayLL, n_quincyLL, shawmutLL, davisLL, alewifeLL, kendallLL, charlesLL,
+                    downtownLL, quincy_cLL, ashmontLL, wollastonLL, fieldsLL, centralLL, braintreeLL];
 
     var pre_jfk = [alewife, davis, porter, harvard, central, kendall, charles, park, downtown, 
     south_station, andrew, jfk];
@@ -258,44 +258,63 @@ var stations = [south_stationLL, andrewLL, porterLL, harvardLL, jfkLL, savinLL, 
     polylineC.setMap(map);
 
     //put yourself as a marker
-    var myLat = 0;
-    var myLon = 0;
-    var me = new google.maps.LatLng(myLat, myLon);
     infowindow = new google.maps.InfoWindow();
 
-    getMyLocation();
+    getMyLocation(stations);
 
-    var min = 999999;
-    var min_index = 999;
+    //using the api
+    /*var request = new XMLHttpRequest();
+    request.open('GET', 'https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis', true);
 
-    for(var i = 0; i < stations.length; ++i) {
-        var temp = google.maps.geometry.spherical.computeDistanceBetween(me, stations[i]);
-        if(temp < min) {
-            min = temp;
-            min_index = i;
+    request.onload = function() {
+        var data = JSON.parse(this.response);
+    }
+
+    request.send();*/
+}
+
+function getMyLocation(stations)
+{
+    if (navigator.geolocation) 
+    { 
+        navigator.geolocation.getCurrentPosition(function(position) { 
+        var myLat = position.coords.latitude;
+        var myLng = position.coords.longitude;
+
+        var me = new google.maps.LatLng(myLat, myLng);                
+
+        map.panTo(me);
+
+        marker = new google.maps.Marker({
+            position: me,
+        });
+
+        marker.setMap(map);                 
+
+        var min = 999999;
+        var min_index = 999;
+        for(var i = 0; i < stations.length; ++i) {
+            var temp = google.maps.geometry.spherical.computeDistanceBetween(me, stations[i]);
+            if(temp < min) {
+                min = temp;
+                min_index = i;
+                }
             }
-        }
 
-    var closest = {lat: stations[min_index].latitude, lon: stations[min_index].longitude}
-    var shortpath = [me, closest];
+        var closest = {lat: stations[min_index].latitude, lon: stations[min_index].longitude}
+        var shortpath = [me, closest];
 
-    var polylineME = new google.maps.Polyline({
-        path: shortpath,
-        geodesic: true,
-        strokeColor: '#0000FF',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    })
-    polylineME.setMap(map);
-    alert("distance between me and davis:" + min);
+        var polylineME = new google.maps.Polyline({
+            path: shortpath,
+            geodesic: true,
+            strokeColor: '#0000FF',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        })
+        polylineME.setMap(map);
+        //alert("distance between me and davis:" + min);
 
-    marker = new google.maps.Marker({
-        position: me,
-    });
-
-    marker.setMap(map);
-
-    google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(marker, 'click', function() {
                     if(min_index === 1) {
                         infowindow.setContent("Closest station: South Station");
                     } else if(min_index === 2) {
@@ -341,25 +360,11 @@ var stations = [south_stationLL, andrewLL, porterLL, harvardLL, jfkLL, savinLL, 
                     }
 
 
-                    infowindow.open(map, marker);
-                });
-}
-
-function getMyLocation()
-{
-    if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        myLat = position.coords.latitude;
-                        myLng = position.coords.longitude;
-                        renderMap();
-                    });
-                }
-                else {
-                    alert("Geolocation is not supported by your web browser.");
-                }
-}
-
-function renderMap() {
-                me = new google.maps.LatLng(myLat, myLng);                
-                map.panTo(me);
+            infowindow.open(map, marker);
+        });
+    })
+    }
+    else {
+        alert("Geolocation is not supported by your web browser.");
+    }
 }
