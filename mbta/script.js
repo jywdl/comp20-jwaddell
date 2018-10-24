@@ -301,7 +301,7 @@ function getMyLocation(stations)
                 }
             }
 
-        var closest = {lat: stations[min_index].latitude, lon: stations[min_index].longitude}
+        var closest = stations[min_index];
         var shortpath = [me, closest];
 
         var polylineME = new google.maps.Polyline({
@@ -309,54 +309,54 @@ function getMyLocation(stations)
             geodesic: true,
             strokeColor: '#0000FF',
             strokeOpacity: 1.0,
-            strokeWeight: 2
+            strokeWeight: 5
         })
         polylineME.setMap(map);
         //alert("distance between me and davis:" + min);
 
         google.maps.event.addListener(marker, 'click', function() {
-                    if(min_index === 1) {
-                        infowindow.setContent("Closest station: South Station");
+                    if(min_index === 0) {
+                        infowindow.setContent("Closest station: South Station: " + min/1609.344 + " miles away");
+                    } else if(min_index === 1) {
+                        infowindow.setContent("Closest station: Andrew Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 2) {
-                        infowindow.setContent("Closest station: Andrew Station");
+                        infowindow.setContent("Closest station: Porter Square: " + min/1609.344 + " miles away");
                     } else if(min_index === 3) {
-                        infowindow.setContent("Closest station: Porter Square");
+                        infowindow.setContent("Closest station: Harvard Square: " + min/1609.344 + " miles away");
                     } else if(min_index === 4) {
-                        infowindow.setContent("Closest station: Harvard Square");
+                        infowindow.setContent("Closest station: JFK Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 5) {
-                        infowindow.setContent("Closest station: JFK Station");
+                        infowindow.setContent("Closest station: Savin Hill: " + min/1609.344 + " miles away");
                     } else if(min_index === 6) {
-                        infowindow.setContent("Closest station: Savin Hill");
+                        infowindow.setContent("Closest station: Park Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 7) {
-                        infowindow.setContent("Closest station: Park Station");
+                        infowindow.setContent("Closest station: Broadway Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 8) {
-                        infowindow.setContent("Closest station: Broadway Station");
+                        infowindow.setContent("Closest station: North Quincy Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 9) {
-                        infowindow.setContent("Closest station: North Quincy Station");
+                        infowindow.setContent("Closest station: Shawmut Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 10) {
-                        infowindow.setContent("Closest station: Shawmut Station");
+                        infowindow.setContent("Closest station: Davis Square: " + min/1609.344 + " miles away");
                     } else if(min_index === 11) {
-                        infowindow.setContent("Closest station: Davis Square");
+                        infowindow.setContent("Closest station: Alewife Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 12) {
-                        infowindow.setContent("Closest station: Alewife Station");
+                        infowindow.setContent("Closest station: Kendall Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 13) {
-                        infowindow.setContent("Closest station: Kendall Station");
+                        infowindow.setContent("Closest station: Charles Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 14) {
-                        infowindow.setContent("Closest station: Charles Station");
+                        infowindow.setContent("Closest station: Downtown Crossing: " + min/1609.344 + " miles away");
                     } else if(min_index === 15) {
-                        infowindow.setContent("Closest station: Downtown Crossing");
+                        infowindow.setContent("Closest station: Quincy Center Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 16) {
-                        infowindow.setContent("Closest station: Quincy Center Station");
+                        infowindow.setContent("Closest station: Ashmont Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 17) {
-                        infowindow.setContent("Closest station: Ashmont Station");
+                        infowindow.setContent("Closest station: Wollaston Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 18) {
-                        infowindow.setContent("Closest station: Wollaston Station");
+                        infowindow.setContent("Closest station: Field Crossing Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 19) {
-                        infowindow.setContent("Closest station: Field Crossing Station");
+                        infowindow.setContent("Closest station: Central Square Station: " + min/1609.344 + " miles away");
                     } else if(min_index === 20) {
-                        infowindow.setContent("Closest station: Central Square Station");
-                    } else if(min_index === 21) {
-                        infowindow.setContent("Closest station: Braintree Station");
+                        infowindow.setContent("Closest station: Braintree Station: " + min/1609.344 + " miles away");
                     }
 
 
