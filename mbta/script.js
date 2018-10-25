@@ -79,154 +79,261 @@ function initMap() {
 	    position: south_station,
         map: map,
 	    title: "South Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'sstat'
     });
+
+   	google.maps.event.addListener(m_south, 'click', function() {
+	        		loadXML(m_south);
+	});
 
     var m_andrew = new google.maps.Marker({
         position: andrew,
         map: map,
         title: "Andrew, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'andrw'
     });
+       	google.maps.event.addListener(m_andrew, 'click', function() {
+	        		loadXML(m_andrew);
+	});
+
 
     var m_porter = new google.maps.Marker({
         position: porter,
         map: map,
         title: "Porter Square, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'portr'
     });
+
+       	google.maps.event.addListener(m_porter, 'click', function() {
+	        		loadXML(m_porter);
+	});
+
     var m_harvard = new google.maps.Marker({
         position: harvard,
         map: map,
         title: "Harvard Square, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'harsq'
     });
+
+       	google.maps.event.addListener(m_harvard, 'click', function() {
+	        		loadXML(m_harvard);
+	});
+
 
     var m_jfk = new google.maps.Marker({
         position: jfk,
         map: map,
         title: "JFK Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'jfk'
     });
+      	google.maps.event.addListener(m_jfk, 'click', function() {
+	        		loadXML(m_jfk);
+	});
+
 
     var m_savin = new google.maps.Marker({
         position: savin,
         map: map,
         title: "Savin Hill, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'shmnl'
     });
+
+       	google.maps.event.addListener(m_savin, 'click', function() {
+	        		loadXML(m_savin);
+	});
+
 
     var m_park = new google.maps.Marker({
         position: park,
         map: map,
         title: "Park Street, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'pktrm'
     });
+       	google.maps.event.addListener(m_park, 'click', function() {
+	        		loadXML(m_park);
+	});
+
 
     var m_broadway = new google.maps.Marker({
         position: broadway,
         map: map,
         title: "Broadway Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'brdwy'
     });
+       	google.maps.event.addListener(m_broadway, 'click', function() {
+	        		loadXML(m_broadway);
+	});
+
 
     var m_n_quincy = new google.maps.Marker({
         position: n_quincy,
         map: map,
         title: "North Quincy, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'nqncy'
     });
+       	google.maps.event.addListener(m_n_quincy, 'click', function() {
+	        		loadXML(m_n_quincy);
+	});
+
 
     var m_shawmut = new google.maps.Marker({
         position: shawmut,
         map: map,
         title: "Shawmut Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'smmnl'
     });
+       	google.maps.event.addListener(m_shawmut, 'click', function() {
+	        		loadXML(m_shawmut);
+	});
+
 
     var m_davis = new google.maps.Marker({
         position: davis,
         map: map,
         title: "Davis Square, Boston, MA",
-        icon: image
+        icon: image,
+        id: "davis"
     });
+
+   	google.maps.event.addListener(m_davis, 'click', function() {
+	        		loadXML(m_davis);
+	});
 
     var m_alewife = new google.maps.Marker({
         position: alewife,
         map: map,
         title: "Alewife Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'alfcl'
     });
+       	google.maps.event.addListener(m_alewife, 'click', function() {
+	        		loadXML(m_alewife);
+	});
 
     var m_kendall = new google.maps.Marker({
         position: kendall,
         map: map,
         title: "Kendall Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'knncl'
     });
+       	google.maps.event.addListener(m_kendall, 'click', function() {
+	        		loadXML(m_kendall);
+	});
 
     var m_charles = new google.maps.Marker({
         position: charles,
         map: map,
         title: "Charles Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'chmnl'
     });
+       	google.maps.event.addListener(m_charles, 'click', function() {
+	        		loadXML(m_charles);
+	});
+
 
     var m_downtown = new google.maps.Marker({
         position: downtown,
         map: map,
         title: "Downtown Crossing, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'dwnxg'
     });
+       	google.maps.event.addListener(m_downtown, 'click', function() {
+	        		loadXML(m_downtown);
+	});
 
     var m_quincy_c = new google.maps.Marker({
         position: quincy_c,
         map: map,
         title: "Quincy Center, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'qnctr'
     });
+
+       	google.maps.event.addListener(m_quincy_c, 'click', function() {
+	        		loadXML(m_quincy_c);
+	});
 
     var m_quincy_a = new google.maps.Marker({
         position: quincy_a,
         map: map,
         title: "Quincy Adams Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'qamnl'
     });
+       	google.maps.event.addListener(m_quincy_a, 'click', function() {
+	        		loadXML(m_quincy_a);
+	});
+
 
     var m_ashmont = new google.maps.Marker({
         position: ashmont,
         map: map,
         title: "Ashmont Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'asmnl'
     });
+       	google.maps.event.addListener(m_ashmont, 'click', function() {
+	        		loadXML(m_ashmont);
+	});
 
     var m_wollaston = new google.maps.Marker({
         position: wollaston,
         map: map,
         title: "Wollaston Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'wlsta'
     });
+       	google.maps.event.addListener(m_wollaston, 'click', function() {
+	        		loadXML(m_wollaston);
+	});
 
     var m_fields = new google.maps.Marker({
         position: fields,
         map: map,
         title: "Fields Corner, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'fldcr'
     });
+       	google.maps.event.addListener(m_fields, 'click', function() {
+	        		loadXML(m_fields);
+	});
 
     var m_central = new google.maps.Marker({
         position: central,
         map: map,
         title: "Central Square, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'cntsq'
     });
+       	google.maps.event.addListener(m_central, 'click', function() {
+	        		loadXML(m_central);
+	});
+
 
     var m_braintree = new google.maps.Marker({
         position: braintree,
         map: map,
         title: "Braintree Station, Boston, MA",
-        icon: image
+        icon: image,
+        id: 'brntn'
     });
+       	google.maps.event.addListener(m_braintree, 'click', function() {
+	        		loadXML(m_braintree);
+	});
+
 
     //polyline
     var polylineA = new google.maps.Polyline({
@@ -259,18 +366,32 @@ function initMap() {
 
     //put yourself as a marker
     infowindow = new google.maps.InfoWindow();
+    //using the api
 
     getMyLocation(stations);
+}
 
-    //using the api
-    /*var request = new XMLHttpRequest();
-    request.open('GET', 'https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis', true);
+function loadXML(marker)
+{
+	var request = new XMLHttpRequest();
+	request.open('GET', 'https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-' + marker.id, true);
+	    request.onreadystatechange = function() {
+	    	if (request.readyState == 4 && request.status == 200) {
+	        	var data = request.responseText;
+	        	loc = JSON.parse(data);
+	        	var content = marker.title;
+	        	for(var i = 0; i < loc.data.length; i++) {
+	        		content = content + "<p>Train departs at: " + loc.data[i].attributes.departure_time +"<p>";
+	        	}
 
-    request.onload = function() {
-        var data = JSON.parse(this.response);
-    }
-
-    request.send();*/
+	        	var stopwindow = new google.maps.InfoWindow();
+	        	stopwindow.setContent(content);
+	        	stopwindow.open(map, marker);
+	    	}
+	    	else
+	    		console.log("data issue");
+	    }
+	request.send();
 }
 
 function getMyLocation(stations)
