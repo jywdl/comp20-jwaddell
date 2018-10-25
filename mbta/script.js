@@ -389,7 +389,6 @@ function loadXML(marker)
 	        	stopwindow.open(map, marker);
 	    	}
 	    	else
-	    		console.log("data issue");
 	    }
 	request.send();
 }
