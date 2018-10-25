@@ -388,7 +388,6 @@ function loadXML(marker)
 	        	stopwindow.setContent(content);
 	        	stopwindow.open(map, marker);
 	    	}
-	    	else
 	    }
 	request.send();
 }
