@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scores</title>
+<h1>2048 Game Center</h1>
+<body>
+<h3>High Scores</h3>
+<div id="hs"></div>
+</body>
+</html>
