@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Security - Jay Waddell</title>
+
+<h2>Introduction</h2>
+<p>The purpose of this job was to find vulnerablities within Billy Witrock's 2048 game server. This server supposedly takes scores obtained on a local 2048 client and puts them on a web server for all to see. However, this server has quite a few overlooked points of vulnerability. </p>
+
+<h2>Methodology</h2>
+<p>At first, I decided to do some black-box testing. I was actually able to find three vulnerabilities without even examining the source code; I was able to just send bad data into the server (in different locations), and realized not many things were actually being checked. After finding those vulnerabilties, I examined the source code to see if there was any attempts at stopping these flaws. As I suspected, there was not.</p>
+
+<h2>Abstract of Findings</h2>
+<p>The three issues I found were as follows: the first was that I was able to utilize cross site scripting (XSS) to insert scores into the database that never actually happened. In lay terms, this means I could just use the command line to input whatever data I wanted into the server. The second vulnerability is also related to XSS, but slightly different. I linked the server to my personal 2048 game client, and after my game was complete, I set my username to an HTTP tag. In my case, I chose to use a combination of 'script' and 'alert' (shown below in more detail under 'Issues Found'). Every time the server is reloaded, an alert that says 'injection' will pop up. Lastly, for the GET route scores.json, setting your username with a flag that means 'not equal to' returns all bits of data EXCEPT the one specified.</p>
+
+<h2>Issues Found</h2>
+<ul>
+	<li>Data is not sanitized when checked as a username. The user can pass in a username that contains HTML/javascript elements and have them run whenever the server is reloaded (image below). This is a fairly low severity issue, because none of the current data can be altered, just fake data can be added. This can be fixed by whenever the username is read in, remove all special characters from the name. This makes it so no HTML/javascript elements can interfere with the server itself.</li>
+	<img src="i1.png"><img src="i1r.png">
+	<li>Passing in the query string "[$ne]" by the username will return all bits of data not listed under the query string (image below). This is a medium severity issue because it allows for access of data that is outside the realms of what is acceptable. Similarly to the previous vulnerability, this can be fixed by removing all special characters from the query string.</li>
+	<img src="i2.png">
+	<li>It is possible to send fake data to the server without having to log in using any credentials using 'curl' on the command line. Using a command in the form "curl --data "username=USERNAME&score=SCORE&grid=GRID" [URL]", it is possible to put data directly on the server. This is a high severity issue, because that means anyone can send malicious data to the server. This can be fixed by forcing login credentials before being granted the ability to send data to the server, or by changing the * in the response header "response.header("Access-Control-Allow-Origin", "*");" to something that prevents anything from being able to send data to it (e.g. enforce the same origin policy).</li>
+	<img src="i3.png">
+</ul>
+<h2>Conclusion</h2>
+<p>Overall, it was fairly easy to break into this web server- so easy that I didn't even need to look at the source code until after I broke in... thrice. This leads me to believe that many websites out there can be broken into very easily, which is a bit alarming to say the least. If this program is to thrive, much of the data needs sanitization, and the response headers must be more restricting.</p>
+
+<h2>References</h2>
+<li>https://piazza.com/class/jl49t7i5aty494</li>
+<li>https://gist.github.com/subfuzion/08c5d85437d5d4f00e58</li>
+
+</html>
